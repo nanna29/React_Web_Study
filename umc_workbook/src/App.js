@@ -9,7 +9,6 @@ const AppContainer = styled.div`
   justify-content: center;
 `;
 
-
 function App() {
   return (
     <div>
