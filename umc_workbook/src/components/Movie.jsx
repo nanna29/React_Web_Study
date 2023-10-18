@@ -28,11 +28,27 @@ const MovieInfo = styled.div`
     }
 `;
 
+const MovieDetail = styled.div`
+display: none;
+vertical-align: middle;
+
+overflow: hidden;
+
+width: 218px;
+height: 408px;
+padding: 16px;
+background-color: black;
+opacity: 0.7;
+color: white;
+
+position: absolute;
+`;
+
 
 export default function Movie(props) {
     
     return(
-        <MovieContainer>
+        <MovieContainer className="movie-container">
             <img
                 src={IMG_BASE_URL + props.poster_path}
                 alt="영화 포스터"
@@ -41,6 +57,10 @@ export default function Movie(props) {
                 <h4>{props.title}</h4>
                 <span>{props.vote_average}</span>
             </MovieInfo>
+            <MovieDetail className="movieDetail">
+                <h4>{props.title}</h4>
+                <span>{props.overview}</span>
+            </MovieDetail>
         </MovieContainer>
 
     );
