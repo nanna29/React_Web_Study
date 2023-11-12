@@ -1,18 +1,13 @@
-import React from "react";
-import Ad from "../Ad.svg";
+import React, { useState } from "react";
+import Ad from "./Ad";
 
 export default function AdPage() {
+  const [isClicked, setIsClicked] = useState(true);
+  console.log(isClicked);
   return (
     <>
-      <img
-        style={{
-          width: "100%",
-          height: "100%",
-          objectfit: "cover",
-        }}
-        src={Ad}
-      />
-      <button>광고 안보기</button>
+      <div>{isClicked ? <Ad /> : null}</div>
+      <button onClick={() => setIsClicked(!isClicked)}>광고 안보기</button>
     </>
   );
 }
