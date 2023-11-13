@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginControl from "./LoginControl";
 
 import styled from "styled-components";
 
@@ -36,6 +37,7 @@ export default function Header() {
       <Link to="/Celebrity" style={{ textDecoration: "none" }}>
         <Navigator>인물</Navigator>
       </Link>
+      <LoginControl />
     </HeaderContainer>
   );
 }

@@ -3,7 +3,7 @@ import Ad from "./Ad";
 
 export default function AdPage() {
   const [isClicked, setIsClicked] = useState(true);
-  console.log(isClicked);
+
   return (
     <>
       <div>{isClicked ? <Ad /> : null}</div>
