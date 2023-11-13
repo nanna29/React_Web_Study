@@ -12,10 +12,6 @@ export const MovieContainer = styled.div`
   > img {
     max-width: 100%;
   }
-  &:hover {
-    display: block;
-    top: 16px;
-  }
 `;
 
 export const MovieInfo = styled.div`
@@ -31,7 +27,7 @@ export const MovieInfo = styled.div`
   }
 `;
 
-export const MovieDetail = styled.div`
+export const MovieDescription = styled.div`
   display: none;
   vertical-align: middle;
 
