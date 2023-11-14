@@ -48,3 +48,9 @@ export const MovieDescription = styled.div`
     top: 16px;
   }
 `;
+
+export const MovieDetailContainer = styled.div`
+  display: flex;
+  margin-top: 30px;
+  margin-left: 250px;
+`;

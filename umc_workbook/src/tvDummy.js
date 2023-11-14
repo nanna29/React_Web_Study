@@ -10,7 +10,8 @@ export const dummy = {
       origin_country: ["US"],
       original_language: "en",
       original_name: "Adventure Time: Fionna & Cake",
-      overview: "",
+      overview:
+        "피오나와 케이크의 어드벤처 타임〉(영어: Adventure Time : Fionna And Cake)은 애덤 무토에 의해 제작된 성인 애니메이션 시리즈다. 해당 시리즈는 펜들턴 워드의 원작 어드벤처 타임을 기반으로 두고 카툰 네트워크의 애니메이션 시리즈 핀과 제이크의 어드벤처 타임의 스핀오프 시리즈다. 핀과 제이크의 어드벤처 타임이 전체관람가로 제작된 것과 다르게 성인 애니메이션으로 제작되었다.[2] 맥스 (스트리밍 서비스)에서 총 10개의 에피소드로 방영한다.",
       popularity: 244.518,
       poster_path: "/fi1b6U1kp73xheECzqwzMn8u3mX.jpg",
       vote_average: 9.3,

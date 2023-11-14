@@ -9,7 +9,7 @@ const NotFoundContainer = styled.div`
 
 export default function NotFound() {
   const navigate = useNavigate();
-  const onClickImg = () => {
+  const onClickHome = () => {
     navigate(`/`);
   };
 
@@ -18,7 +18,7 @@ export default function NotFound() {
       <h1>해당 페이지를 찾지 못했습니다.</h1>
       <br />
       <h2>주소가 잘못 되었거나, 더 이상 제공되지 않는 페이지입니다.</h2>
-      <h2 onClick={onClickImg} style={{ color: "red" }}>
+      <h2 onClick={onClickHome} style={{ color: "red" }}>
         메인 페이지로 이동
       </h2>
     </NotFoundContainer>

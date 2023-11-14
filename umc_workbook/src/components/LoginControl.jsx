@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const LoginWrap = styled.div`
   margin-left: 20px;
@@ -12,14 +13,6 @@ const LoginWrap = styled.div`
   display: flex;
 `;
 
-const IsLoggedIn = styled.div`
-  color: red;
-`;
-
-const IsLoggedOut = styled.div`
-  color: red;
-`;
-
 const Text = styled.div`
   margin-left: 20px;
   color: white;
@@ -29,8 +22,15 @@ export default function LoginControl() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [ButtonTxt, setButtonTxt] = useState("로그인");
   const [text, setText] = useState("로그인 해주세요!");
-  console.log(isLoggedIn);
-  console.log(ButtonTxt);
+
+  const navigate = useNavigate();
+
+  const onClickLogin = () => {
+    if (!isLoggedIn) {
+      navigate(`/loginForm`);
+    }
+  };
+
   const handleChangeValue = () => {
     if (isLoggedIn) {
       setButtonTxt("로그인");
@@ -47,6 +47,7 @@ export default function LoginControl() {
           onClick={() => {
             setIsLoggedIn(!isLoggedIn);
             handleChangeValue();
+            onClickLogin();
           }}
         >
           {ButtonTxt}

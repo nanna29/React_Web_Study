@@ -28,13 +28,13 @@ export default function Header() {
         />
       </Link>
 
-      <Link to="/Movies" style={{ textDecoration: "none" }}>
+      <Link to="/movies" style={{ textDecoration: "none" }}>
         <Navigator>영화</Navigator>
       </Link>
-      <Link to="/TV" style={{ textDecoration: "none" }}>
+      <Link to="/tvs" style={{ textDecoration: "none" }}>
         <Navigator>TV 프로그램</Navigator>
       </Link>
-      <Link to="/Celebrity" style={{ textDecoration: "none" }}>
+      <Link to="/celebrity" style={{ textDecoration: "none" }}>
         <Navigator>인물</Navigator>
       </Link>
       <LoginControl />
