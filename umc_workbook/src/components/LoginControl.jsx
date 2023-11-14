@@ -26,26 +26,31 @@ export default function LoginControl() {
   const navigate = useNavigate();
 
   const onClickLogin = () => {
-    if (!isLoggedIn) {
-      navigate(`/loginForm`);
-    }
+    navigate(`/loginPage`);
+
+    // if (isLoggedIn == false) {
+
+    // }
   };
 
   const handleChangeValue = () => {
     if (isLoggedIn) {
       setButtonTxt("로그인");
       setText("로그인 해주세요!");
-    } else {
-      setButtonTxt("로그아웃");
-      setText("환영합니다!");
     }
+    // 로그아웃 전환 관련 주석 처리
+    // else {
+    //   setButtonTxt("로그아웃");
+    //   setText("환영합니다!");
+    // }
   };
   return (
     <>
       <LoginWrap>
         <button
           onClick={() => {
-            setIsLoggedIn(!isLoggedIn);
+            // 로그아웃 전환 관련 주석 처리
+            //setIsLoggedIn(!isLoggedIn);
             handleChangeValue();
             onClickLogin();
           }}

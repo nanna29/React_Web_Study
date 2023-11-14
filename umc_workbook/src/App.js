@@ -6,7 +6,7 @@ import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
 import MovieDetail from "./pages/MovieDetail.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import LoginformPage from "./components/LoginPage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
 import TVDetail from "./pages/TVDetail.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./components/Global.style.jsx";
@@ -24,7 +24,7 @@ function App() {
           <Route path="/celebrity" element={<Celebrity />} />
           <Route path="/movies/:title" element={<MovieDetail />} />
           <Route path="/tvs/:name" element={<TVDetail />} />
-          <Route path="/loginForm" element={<LoginformPage />} />
+          <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
