@@ -1,3 +1,4 @@
+//애초에 처음에 이메일이랑 비번 둘다 공백일때도 조건 달아서 비활성화 시켜야 함
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 const LoginPageWrap = styled.div`
@@ -8,17 +9,19 @@ const InputField = styled.input`
   height: 50px;
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.5);
+  color: black;
+  padding-left: 15px;
 `;
 const LoginButton = styled.button`
   width: 500px;
   height: 50px;
   border-radius: 25px;
-  background-color: #22254b;
+  background-color: ${(props) => (props.disabled ? "#ccc" : "#22254b")};
   color: white;
   ${(props) =>
     props.disabled &&
     css`
-      background-color: #ccc;
+      cursor: not-allowed;
     `}
 `;
 
@@ -27,18 +30,10 @@ const ErrorMessage = styled.span`
   color: red;
 `;
 
-const PWMessage = styled.span`
-  top: ${(props) => (props.Error ? "41%" : "38%")};
-  position: absolute;
-  left: 20px;
-  color: gray;
-`;
-
 export default function LoginPage() {
   const [showEmailError, setShowEmailError] = useState(false);
   const [isPwError, setIsPWError] = useState(false);
-  const [password, setPassword] = useState("");
-  const [showPlaceholder, setShowPlaceholder] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   const pwPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
@@ -46,12 +41,12 @@ export default function LoginPage() {
   const onChangeEmail = (event) => {
     const newEmail = event.target.value;
 
-    if (!newEmail) {
-      setShowEmailError(true); // 이메일이 비어 있으면 에러 표시
-    } else if (!emailPattern.test(newEmail)) {
-      setShowEmailError(true); // 이메일 형식이 유효하지 않으면 에러 표시
-    } else {
-      setShowEmailError(false); // 이메일이 유효하면 에러 해제
+    if (!newEmail || !emailPattern.test(newEmail)) {
+      setShowEmailError(true);
+      setIsButtonDisabled(true);
+    } else if (!(!newEmail || !emailPattern.test(newEmail)) && isPwError) {
+      setShowEmailError(false);
+      setIsButtonDisabled(false);
       console.log("setShowEmailError");
     }
   };
@@ -59,17 +54,17 @@ export default function LoginPage() {
   const onChangePW = (event) => {
     const newPassword = event.target.value;
 
-    if (!newPassword) {
+    if (!newPassword || !pwPattern.test(newPassword)) {
       setIsPWError(true);
-    } else if (!pwPattern.test(newPassword)) {
-      setIsPWError(true);
-    } else {
+      setIsButtonDisabled(true);
+    } else if (
+      !(!newPassword || !pwPattern.test(newPassword)) &&
+      showEmailError
+    ) {
       setIsPWError(false);
+      setIsButtonDisabled(false);
       console.log("setIsPWError");
     }
-
-    setPassword(newPassword);
-    setShowPlaceholder(newPassword === "");
   };
 
   return (
@@ -89,17 +84,12 @@ export default function LoginPage() {
       <h3>비밀번호</h3>
       <InputField
         type="password"
-        value={password}
         onChange={onChangePW}
+        placeholder="영문, 숫자, 특수문자 포함 8자 이상"
       ></InputField>
-      {showPlaceholder && (
-        <PWMessage Error={showEmailError}>
-          영문, 숫자, 특수문자 포함 8자 이상
-        </PWMessage>
-      )}
       <br />
       <br />
-      <LoginButton disabled={showEmailError || isPwError}>확인</LoginButton>
+      <LoginButton disabled={isButtonDisabled}>확인</LoginButton>
     </LoginPageWrap>
   );
 }
