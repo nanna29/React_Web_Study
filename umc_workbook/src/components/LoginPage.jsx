@@ -1,9 +1,10 @@
-//애초에 처음에 이메일이랑 비번 둘다 공백일때도 조건 달아서 비활성화 시켜야 함
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
 const LoginPageWrap = styled.div`
   margin-left: 10px;
 `;
+
 const InputField = styled.input`
   width: 500px;
   height: 50px;
@@ -12,17 +13,13 @@ const InputField = styled.input`
   color: black;
   padding-left: 15px;
 `;
+
 const LoginButton = styled.button`
   width: 500px;
   height: 50px;
   border-radius: 25px;
   background-color: ${(props) => (props.disabled ? "#ccc" : "#22254b")};
   color: white;
-  ${(props) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-    `}
 `;
 
 const ErrorMessage = styled.span`
@@ -89,7 +86,12 @@ export default function LoginPage() {
       ></InputField>
       <br />
       <br />
-      <LoginButton disabled={isButtonDisabled}>확인</LoginButton>
+      <LoginButton
+        disabled={isButtonDisabled}
+        onClick={() => console.log("클릭")}
+      >
+        확인
+      </LoginButton>
     </LoginPageWrap>
   );
 }
