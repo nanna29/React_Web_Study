@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import GlobalStyle from "./components/Global.style.jsx";
+
 import Movies from "./pages/Movies.jsx";
 import TVs from "./pages/TVs.jsx";
 import Celebrity from "./pages/Celebrity.jsx";
@@ -6,10 +9,8 @@ import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
 import MovieDetail from "./pages/MovieDetail.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import LoginPage from "./components/LoginPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import TVDetail from "./pages/TVDetail.jsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GlobalStyle from "./components/Global.style.jsx";
 
 function App() {
   return (

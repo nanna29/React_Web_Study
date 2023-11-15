@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { dummy } from "../tvDummy.js";
+import { dummy } from "../dummies/tvDummy.js";
 import TV from "../components/TV.jsx";
 
 const AppContainer = styled.div`
