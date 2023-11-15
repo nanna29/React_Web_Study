@@ -78,9 +78,7 @@ export default function Input() {
             {data.weather[0].main}
           </p>
         </CityWeather>
-      ) : (
-        <p>로딩중...</p>
-      )}
+      ) : null}
     </WeatherWrap>
   );
 }
