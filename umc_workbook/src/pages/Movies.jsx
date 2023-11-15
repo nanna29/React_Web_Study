@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { dummy } from "../movieDummy.js";
+import { dummy } from "../dummies/movieDummy.js";
 import Movie from "../components/Movie.jsx";
 
 const AppContainer = styled.div`
