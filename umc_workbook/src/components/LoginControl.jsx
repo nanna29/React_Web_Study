@@ -26,7 +26,7 @@ export default function LoginControl() {
   const navigate = useNavigate();
 
   const onClickLogin = () => {
-    navigate(`/loginPage`);
+    navigate(`/login-page`);
 
     // if (isLoggedIn == false) {
 

@@ -1,3 +1,8 @@
+// 현재 서버에서 달라는 값은 아이디고 과제에는 이메일이라서 코드가 좀 꼬였습니다.
+// AXIOS 통신하는 동안 버튼 클릭되지 않게는 못했고, 색깔 바뀌는걸로 했습니다.
+// 애초에 클릭되지 않게 해버리면 id인 umcweb 을 입력해도 버튼이 disabled 되서 제출이 안됩니다.
+// 이부분 차후에 통일하도록 하겠습니다.
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -36,6 +41,7 @@ export default function LoginPage() {
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPwError, setShowPWError] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [loadingTxt, setLoadingTxt] = useState("");
 
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   const pwPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
@@ -51,9 +57,8 @@ export default function LoginPage() {
       //이메일 검사 통과 했을 때
       setShowEmailError(false);
       //이메일 검사 통과 + 패스워드 공란 아니면
-      //console.log(newPassword);
       if (newPassword != "" && !showPwError) {
-        //console.log("비번 공란 아니면");
+        //버튼 비활성화 해제
         setIsButtonDisabled(false);
       }
     }
@@ -69,14 +74,15 @@ export default function LoginPage() {
     } else {
       //비밀번호 검사 통과 했을 때
       setShowPWError(false);
+      //비번 검사 통과 + 이메일 공란 아니면
       if (newEmail != "" && !showEmailError) {
-        //console.log("비번 공란 아니면");
+        //버튼 비활성화 해제
         setIsButtonDisabled(false);
       }
     }
   };
 
-  const onClickLoginBtn = (event) => {
+  const onClickLoginBtn = () => {
     if (newEmail == "" || newPassword == "") {
       alert("이메일 주소나 비밀번호를 다시 확인해주세요");
     } else {
@@ -92,12 +98,17 @@ export default function LoginPage() {
         id: newEmail,
         pw: newPassword,
       };
-
+      setIsButtonDisabled(true); // axios를 통신하는 동안 버튼이 클릭되지 않도록
       const response = await axios.post(apiURL, postData);
-      console.log("응답:", response.data);
-      console.log("상태코드:", response.status);
+      console.log("응답:", response.data, "상태코드:", response.status);
     } catch (error) {
       console.error("Error:", error.message);
+    } finally {
+      setLoadingTxt("Loading...");
+      setTimeout(() => {
+        setIsButtonDisabled(false); // 버튼 활성화
+        setLoadingTxt(""); // "Loading..." 제거
+      }, 1500);
     }
   };
 
@@ -127,6 +138,7 @@ export default function LoginPage() {
       <LoginButton disabledBG={isButtonDisabled} onClick={onClickLoginBtn}>
         확인
       </LoginButton>
+      <div>{loadingTxt}</div>
     </LoginPageWrap>
   );
 }
