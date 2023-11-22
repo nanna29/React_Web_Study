@@ -101,6 +101,9 @@ export default function LoginPage() {
       setIsButtonDisabled(true); // axios를 통신하는 동안 버튼이 클릭되지 않도록
       const response = await axios.post(apiURL, postData);
       console.log("응답:", response.data, "상태코드:", response.status);
+      localStorage.clear();
+      localStorage.setItem("id", response.data.result.userId);
+      localStorage.setItem("token", response.data.result.AccessToken);
     } catch (error) {
       console.error("Error:", error.message);
     } finally {
@@ -134,7 +137,7 @@ export default function LoginPage() {
       <ErrorMessage Error={showPwError}>
         올바른 비밀번호를 입력해주세요
       </ErrorMessage>
-
+      <br />
       <LoginButton disabledBG={isButtonDisabled} onClick={onClickLoginBtn}>
         확인
       </LoginButton>
