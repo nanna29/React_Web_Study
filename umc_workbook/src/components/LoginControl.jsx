@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 const LoginWrap = styled.div`
   margin-left: 20px;
@@ -24,34 +24,35 @@ export default function LoginControl() {
   const [text, setText] = useState("로그인 해주세요!");
 
   const navigate = useNavigate();
+  const { state } = useLocation(); // 현재 페이지의 URL 정보를 가져오는 데 사용
 
-  const onClickLogin = () => {
-    navigate(`/login-page`);
-
-    // if (isLoggedIn == false) {
-
-    // }
-  };
-
-  const handleChangeValue = () => {
-    if (isLoggedIn) {
+  useEffect(() => {
+    if (state == 200) {
+      setButtonTxt("로그아웃");
+      setText("환영합니다!");
+      isLoggedIn == false;
+    } else {
       setButtonTxt("로그인");
       setText("로그인 해주세요!");
     }
-    // 로그아웃 전환 관련 주석 처리
-    // else {
-    //   setButtonTxt("로그아웃");
-    //   setText("환영합니다!");
-    // }
+  }, [state]);
+
+  const onClickLogin = () => {
+    if (isLoggedIn && state == 200) {
+      //로그인 되어있을 때
+      isLoggedIn == true;
+      navigate(`/`);
+    } else {
+      alert("로그아웃 되었습니다");
+      navigate(`/login-page`);
+    }
   };
+
   return (
     <>
       <LoginWrap>
         <button
           onClick={() => {
-            // 로그아웃 전환 관련 주석 처리
-            //setIsLoggedIn(!isLoggedIn);
-            handleChangeValue();
             onClickLogin();
           }}
         >
