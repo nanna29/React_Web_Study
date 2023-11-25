@@ -91,9 +91,9 @@ export default function LoginPage() {
       alert("아이디나 비밀번호를 다시 확인해주세요");
     } else {
       // 모든 조건이 들어맞고, 확인 버튼이 눌렸을 시에 실행
-      console.log("제출");
+      //console.log("제출");
       const response = await submitInfo(); // 비동기로 실행
-      console.log(response);
+      //console.log(response);
       setLoadingTxt("Loading...");
       // 1.5초동안 실행
       setTimeout(() => {
