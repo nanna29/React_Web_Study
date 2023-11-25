@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Celebrity() {
-  return <div>Celebrity</div>;
+  return <div>Celebrity~~</div>;
 }
