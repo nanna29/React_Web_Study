@@ -1,8 +1,3 @@
-// 현재 서버에서 달라는 값은 아이디고 과제에는 이메일이라서 코드가 좀 꼬였습니다.
-// AXIOS 통신하는 동안 버튼 클릭되지 않게는 못했고, 색깔 바뀌는걸로 했습니다.
-// 애초에 클릭되지 않게 해버리면 id인 umcweb 을 입력해도 버튼이 disabled 되서 제출이 안됩니다.
-// 이부분 차후에 통일하도록 하겠습니다.
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -96,9 +91,9 @@ export default function LoginPage() {
       alert("아이디나 비밀번호를 다시 확인해주세요");
     } else {
       // 모든 조건이 들어맞고, 확인 버튼이 눌렸을 시에 실행
-      //console.log("제출");
+      console.log("제출");
       const response = await submitInfo(); // 비동기로 실행
-      //console.log(response);
+      console.log(response);
       setLoadingTxt("Loading...");
       // 1.5초동안 실행
       setTimeout(() => {
