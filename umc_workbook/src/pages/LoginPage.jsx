@@ -93,12 +93,12 @@ export default function LoginPage() {
 
   const onClickLoginBtn = async () => {
     if (newEmail == "" || newPassword == "") {
-      alert("이메일 주소나 비밀번호를 다시 확인해주세요");
+      alert("아이디나 비밀번호를 다시 확인해주세요");
     } else {
       // 모든 조건이 들어맞고, 확인 버튼이 눌렸을 시에 실행
-      console.log("제출");
+      //console.log("제출");
       const response = await submitInfo(); // 비동기로 실행
-      console.log(response);
+      //console.log(response);
       setLoadingTxt("Loading...");
       // 1.5초동안 실행
       setTimeout(() => {
@@ -106,9 +106,12 @@ export default function LoginPage() {
         setLoadingTxt(""); // "Loading..." 제거
         if (response && response.status === 200) {
           // 비밀번호 & 아이디 값 맞으면 실행
-          navigate(`/`);
+
+          navigate(`/`, {
+            state: `${response.status}`,
+          });
         } else {
-          alert("이메일 주소나 비밀번호를 다시 확인해주세요");
+          alert("아이디나 비밀번호를 다시 확인해주세요");
         }
       }, 1500);
     }
@@ -156,7 +159,11 @@ export default function LoginPage() {
       <LoginButton disabled={isButtonDisabled} onClick={onClickLoginBtn}>
         확인
       </LoginButton>
-      <div>{loadingTxt}</div>
+
+      <div>
+        <br />
+        {loadingTxt}
+      </div>
     </LoginPageWrap>
   );
 }

@@ -4,8 +4,8 @@ const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280/";
 import { MovieDetailContainer } from "../components/Movie.style";
 
 export default function MovieDetail() {
-  const { title } = useParams(); // URL의 파라미터 추출
-  const { state } = useLocation(); // 현재 페이지의 URL 정보를 가져오는 데 사용
+  const { title } = useParams();
+  const { state } = useLocation();
 
   return (
     <MovieDetailContainer>
