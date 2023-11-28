@@ -2,12 +2,26 @@ import React, { useState } from "react";
 import Ad from "./Ad";
 
 export default function AdPage() {
-  const [isClicked, setIsClicked] = useState(true);
-
+  const [isShow, setIsShow] = useState(true);
+  const [showAdText, setShowAdText] = useState("광고 안보기");
   return (
     <>
-      <div>{isClicked ? <Ad /> : null}</div>
-      <button onClick={() => setIsClicked(!isClicked)}>광고 안보기</button>
+      {/* true면 광고 보여주기 */}
+      <div>{isShow ? <Ad /> : null}</div>
+
+      <button
+        onClick={() => {
+          setIsShow(!isShow);
+          console.log(isShow);
+          if (isShow) {
+            setShowAdText("광고 보기");
+          } else {
+            setShowAdText("광고 안보기");
+          }
+        }}
+      >
+        {showAdText}
+      </button>
     </>
   );
 }

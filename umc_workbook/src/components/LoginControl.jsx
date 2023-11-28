@@ -43,6 +43,7 @@ export default function LoginControl() {
       isLoggedIn == true;
       navigate(`/`);
     } else {
+      console.log("Dd");
       alert("로그아웃 되었습니다");
       navigate(`/login-page`);
     }
